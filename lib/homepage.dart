@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     DatabaseHelper _db = DatabaseHelper();
-    print(_db.todos(1).toString());
+
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -41,6 +41,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Expanded(
                     child: FutureBuilder(
+                      initialData: [Task()],
                       future: _db.tasks(),
                       builder: (
                           BuildContext context,
@@ -52,13 +53,14 @@ class _HomePageState extends State<HomePage> {
                                       context, MaterialPageRoute(
                                       builder: (context)=> TaskPage(task:snapshot.data![index] )
                                   )
-                                  ),
+                                  ).then((value){ setState(() {
+
+                                  });}),
                                   child: TaskCardWidget(
                                     title: snapshot.data![index].title,desc:snapshot.data![index].description ,)
                               );
                             });
                       },
-
                     )
                 ),
               ],

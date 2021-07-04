@@ -30,4 +30,5 @@ class Task{
   String toString() {
     return 'Task{id: $id, title: $title, description: $description}';
   }
+  Task.fromMap(Map<String, dynamic> map): id = map['id'],title = map['title'],description = map['description'];
 }

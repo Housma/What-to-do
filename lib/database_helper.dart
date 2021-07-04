@@ -56,6 +56,33 @@ class DatabaseHelper {
     });
   }
   // A method that retrieves all the dogs from the dogs table.
+  Future<Task> taskById(int id) async {
+
+
+    // Get a reference to the database.
+    final db = await database();
+
+    String where_cond = "id = ${id}";
+
+    var result  = await db.query('tasks' , where: where_cond);
+    Map map = result.first;
+    Task task = Task(id: map["id"],title: map["title"],description: map["description"]);
+    return task;
+  }
+  Future<Todo> todoById(int id) async {
+
+
+    // Get a reference to the database.
+    final db = await database();
+
+    String where_cond = "id = ${id}";
+
+    var result  = await db.query('todo' , where: where_cond);
+    Map map = result.first;
+    Todo todo = Todo(id: map["id"],name:map["name"],taskId: map["taskId"],isDone: map["isDone"]);
+    return todo;
+  }
+  // A method that retrieves all the dogs from the dogs table.
   Future<List<Todo>> todos(int id) async {
     // Get a reference to the database.
     final db = await database();
@@ -72,6 +99,31 @@ class DatabaseHelper {
         isDone: maps[i]['isDone'],
       );
     });
+  }
+  Future<void> updateTodo(Todo todo) async {
+    // Get a reference to the database.
+    final db = await database();
+
+    // Update the given Dog.
+    await db.update(
+      'todo',
+      todo.toMap(),
+      where: 'id = ?',
+      whereArgs: [todo.id],
+    );
+  }
+  Future<void> deleteTask(int id) async {
+    // Get a reference to the database.
+    final db = await database();
+
+    // Remove the Dog from the database.
+    await db.delete(
+      'tasks',
+      // Use a `where` clause to delete a specific dog.
+      where: 'id = ?',
+      // Pass the Dog's id as a whereArg to prevent SQL injection.
+      whereArgs: [id],
+    );
   }
 
 }

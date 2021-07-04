@@ -1,7 +1,7 @@
 class Todo{
   late final int id;
   late final String name;
-  late final int isDone;
+  late  int isDone;
   late final int taskId;
 
   Todo ({int id = 0 , String name = "" , int isDone = 0, int taskId = 0 }) {

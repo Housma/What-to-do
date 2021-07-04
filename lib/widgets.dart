@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'database_helper.dart';
+import 'models/todo.dart';
+
 class TaskCardWidget extends StatelessWidget {
   late final String title;
   late final String desc;
@@ -32,11 +35,14 @@ class TaskCardWidget extends StatelessWidget {
 
 
 class TaskItem extends StatefulWidget {
+
   late final String name;
   late final bool isDone;
+  late int  id;
 
-  TaskItem ({String name = "" , int isDone = 0 }) {
+  TaskItem ({String name = "" , int isDone = 0, int id = 0 }) {
     this.name = name;
+    this.id = id;
     if(isDone == 0 ){
       this.isDone = false;
     }else{
@@ -52,13 +58,18 @@ class _TaskItemState extends State<TaskItem> {
   bool first = false;
   late bool isChecked;
   late String name;
+  late int id;
+
   @override
   Widget build(BuildContext context) {
+
     if(first==false){
       first = true;
       isChecked = widget.isDone;
       name = widget.name;
+      id = widget.id;
     }
+
 
     return Row(
       children: [
@@ -67,6 +78,16 @@ class _TaskItemState extends State<TaskItem> {
           value: isChecked,
           onChanged: (bool? value) {
             setState(() {
+              DatabaseHelper _db = DatabaseHelper();
+              _db.todoById(id).then((obj){
+                setState(() {
+                  print(obj);
+                  int newIsDone = (obj.isDone + 1) % 2 ;
+                  obj.isDone = newIsDone;
+                  _db.updateTodo(obj);
+                });
+
+              });
               isChecked = value!;
             });
           },
