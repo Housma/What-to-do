@@ -29,6 +29,19 @@ class DatabaseHelper {
     });
     return taskId;
   }
+
+  Future<void> updateTaskDesc(Task task) async {
+    // Get a reference to the database.
+    final db = await database();
+
+    // Update the given Dog.
+    await db.update(
+      'tasks',
+      task.toMap(),
+      where: 'id = ?',
+      whereArgs: [task.id],
+    );
+  }
   Future<int> insertTodo(Todo todo) async {
     int taskId = 0;
 
