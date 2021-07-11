@@ -36,8 +36,13 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image(
-                  image: AssetImage("assets/images/logo.png"),
+                Center(
+                  child: Image(
+                    image: AssetImage("assets/images/logo.png"),
+                  ),
+                ),
+                Center(
+                  child: Text("Don't forget to do it."),
                 ),
                 Expanded(
                     child: FutureBuilder(

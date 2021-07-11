@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.housma.to_do_list">
    <application
-        android:label="to_do_list"
+        android:label="What To Do"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
