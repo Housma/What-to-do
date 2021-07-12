@@ -1,6 +1,6 @@
 # What to do
 
-A new Flutter application.
+This project made with Flutter using dart with Kotlin for Android and Swift for IOS
 
 ## Getting Started
 
