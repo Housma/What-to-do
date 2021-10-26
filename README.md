@@ -1,16 +1,13 @@
-# to_do_list
+# What to do
 
-A new Flutter application.
+This project made with Flutter using dart with Kotlin for Android and Swift for IOS
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+-Very useful app can help you to organize your tasks.
 
-A few resources to get you started if this is your first Flutter project:
+-You can create a Task with sub tasks and mark the tasks as its done.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+-It's open source application no permissions are required all the data are stored on your phone.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+-This app is free and doesn't contains ads
